@@ -1,0 +1,16 @@
+//调用其他js，uploadFolder，需要在upload中增加module.exports的设定
+var uploadFolder = require("arseeding-js/cjs/uploadFolder")
+const path = './././arupload'
+const priv = <your private ethereum key> //使用ethereum 私钥
+const url = 'https://arseed.web3infra.dev'
+const currency = 'AR' // AR or ETH,BNB etc.
+
+
+uploadFolder.uploadFolderAndPay(path,priv,url,currency).catch((e)=>{
+    console.log(e)
+}).then((res)=>{
+    console.log(res.maniId)
+})
+
+// review manifest Data
+curl --location --request GET 'https://arseed.web3infra.dev/{res.maniId}'
